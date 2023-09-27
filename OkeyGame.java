@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Random;
 
 public class OkeyGame {
 
@@ -140,7 +141,14 @@ public class OkeyGame {
      * the current status. Print whether computer picks from tiles or discarded ones.
      */
     public void pickTileForComputer() {
+        Random rand = new Random();
+        int num = rand.nextInt(2);
 
+        if (num == 0) {
+            System.out.println("Picked from tiles: " + getTopTile());
+        } else {
+            System.out.println("Picked from discarded ones: " + getLastDiscardedTile());
+        }
     }
 
     /*

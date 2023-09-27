@@ -77,7 +77,14 @@ public class Player {
      * TODO: removes and returns the tile in given index
      */
     public Tile getAndRemoveTile(int index) {
-        return null;
+        
+        Tile removeTile = this.playerTiles[index];
+
+        for (int i = index; i < numberOfTiles - 1; i++) {
+            playerTiles[i] = playerTiles[i + 1];
+        }
+        playerTiles[numberOfTiles] = null;
+        return removeTile;
     }
 
     /*
@@ -119,6 +126,23 @@ public class Player {
      * you are allowed to use Collections.sort method
      */
     public void sortTilesValueFirst() {
+        int length = playerTiles.length;
+        Tile temp;
+        boolean isSorted = false ;
+
+        for (int i = 0; i < length - 1 && isSorted == false; i++) {
+            isSorted = true;
+            for (int j = 0; j < length -1 - i; j++) {
+
+                if (playerTiles[j].compareToValueFirst(playerTiles[j+1]) == 1 ) {
+                    temp = playerTiles[j];
+                    playerTiles[j] = playerTiles[j+1];
+                    playerTiles[j+1] = temp;  
+                    isSorted = false;
+
+                }
+            }
+        }
 
     }
 
