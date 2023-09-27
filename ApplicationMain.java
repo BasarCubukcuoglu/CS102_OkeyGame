@@ -112,6 +112,12 @@ public class ApplicationMain {
                     System.out.print("Discard the tile in index: ");
                     playerChoice = sc.nextInt();
 
+                    while(playerChoice <= 14 && playerChoice >= 0){
+                        System.out.println("Entered index value is inappropriate please select another \n");
+                        playerChoice = sc.nextInt();
+                    }
+
+                    
                     // TODO: make sure the given index is correct, should be 0 <= index <= 14
 
                     game.discardTile(playerChoice);
