@@ -2,6 +2,7 @@ public class OkeyGame {
 
     Player[] players;
     Tile[] tiles;
+    int currentTileIndex = 0; // current index for the tiles array.
 
     Tile lastDiscardedTile;
 
@@ -33,7 +34,14 @@ public class OkeyGame {
      * this method assumes the tiles are already sorted
      */
     public void distributeTilesToPlayers() {
-
+        for ( int i = 0; i < 4; i++ )
+        {
+            for ( int j = 14*i; j < 14; j++ )
+            {
+                players[i].addTile( tiles[j] );
+                currentTileIndex++;
+            }
+        }
     }
 
     /*
@@ -106,7 +114,7 @@ public class OkeyGame {
      * that player's tiles
      */
     public void discardTile(int tileIndex) {
-
+        lastDiscardedTile = players[ currentPlayerIndex ].getAndRemoveTile(tileIndex);
     }
 
     public void currentPlayerSortTilesColorFirst() {

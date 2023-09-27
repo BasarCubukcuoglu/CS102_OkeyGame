@@ -86,7 +86,14 @@ public class Player {
      * have more than 15 tiles at a time
      */
     public void addTile(Tile t) {
+        if ( this.numberOfTiles < 15 )
+        {
+            this.playerTiles[numberOfTiles] = t;
+            this.numberOfTiles++;
+        }
 
+        else
+            System.out.println( "You cannot have more than 15 tiles!");
     }
 
     /*
