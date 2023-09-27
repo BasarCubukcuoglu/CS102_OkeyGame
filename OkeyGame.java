@@ -160,7 +160,23 @@ public class OkeyGame {
      * known by other players
      */
     public void discardTileForComputer() {
+        int leastUsefulIndex = 0;
+        int minChain = 999;
 
+        for (int i = 0; i < 15;i++) {
+            int chainLength = players[currentPlayerIndex].findLongestChainOf(players[currentPlayerIndex].playerTiles[i]);
+            //findLongestChainOf(players[currentPlayerIndex].playerTiles[i]);
+
+
+            if (chainLength < minChain) {
+                minChain = chainLength;
+                leastUsefulIndex = i;
+            }
+
+        }
+
+        System.out.println(players[currentPlayerIndex] + "discarded: " + players[currentPlayerIndex].playerTiles[leastUsefulIndex]);
+        lastDiscardedTile = players[ currentPlayerIndex ].getAndRemoveTile(leastUsefulIndex);
     }
 
     /*

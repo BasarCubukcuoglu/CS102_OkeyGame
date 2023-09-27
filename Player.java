@@ -113,7 +113,23 @@ public class Player {
      * you are allowed to use Collections.sort method
      */
     public void sortTilesColorFirst() {
-        
+        int length = playerTiles.length;
+        Tile temp;
+        boolean isSorted = false ;
+
+        for (int i = 0; i < length - 1 && isSorted == false; i++) {
+            isSorted = true;
+            for (int j = 0; j < length -1 - i; j++) {
+
+                if (playerTiles[j].compareToColorFirst(playerTiles[j+1]) == 1 ) {
+                    temp = playerTiles[j];
+                    playerTiles[j] = playerTiles[j+1];
+                    playerTiles[j+1] = temp;  
+                    isSorted = false;
+
+                }
+            }
+        }
     }
 
     /*
