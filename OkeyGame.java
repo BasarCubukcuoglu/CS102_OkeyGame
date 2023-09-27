@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 
 public class OkeyGame {
@@ -103,6 +104,25 @@ public class OkeyGame {
      * for this simplified version
      */
     public boolean didGameFinish() {
+        int[] longestChainPerTile = players[currentPlayerIndex].calculateLongestChainPerTile();
+        Arrays.sort(longestChainPerTile, Collections.reverseOrder());
+        
+        if(longestChainPerTile[0] == 4 && longestChainPerTile[4] == 4){
+            for(int i = 8; i < longestChainPerTile.length - 1; i++){
+                if(longestChainPerTile[i] < 3){
+                    return false;
+                }
+            }
+            return true;
+        }
+        else if(longestChainPerTile[0] == 5){
+            for(int i = 5; i < longestChainPerTile.length - 1; i++){
+                if(longestChainPerTile[i] < 3){
+                    return false;
+                }
+            }
+            return true;
+        }
         return false;
     }
 
