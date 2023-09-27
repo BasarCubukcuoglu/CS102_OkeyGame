@@ -104,8 +104,14 @@ public class OkeyGame {
      * for this simplified version
      */
     public boolean didGameFinish() {
-        int[] longestChainPerTile = players[currentPlayerIndex].calculateLongestChainPerTile();
-        Arrays.sort(longestChainPerTile, Collections.reverseOrder());
+        int[] unordered = players[currentPlayerIndex].calculateLongestChainPerTile();
+        int[] longestChainPerTile = new int[unordered.length];
+        int index = 0;
+        Arrays.sort(unordered);
+
+        for(int i = unordered.length - 1; i >= 0; i--, index++){
+            longestChainPerTile[index] = unordered[i]; 
+        }
         
         if(longestChainPerTile[0] == 4 && longestChainPerTile[4] == 4){
             for(int i = 8; i < longestChainPerTile.length - 1; i++){
