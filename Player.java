@@ -135,7 +135,7 @@ public class Player {
      * you are allowed to use Collections.sort method
      */
     public void sortTilesColorFirst() {
-        int length = playerTiles.length;
+        int length = numberOfTiles;
         Tile temp;
         boolean isSorted = false ;
 
@@ -164,7 +164,7 @@ public class Player {
      * you are allowed to use Collections.sort method
      */
     public void sortTilesValueFirst() {
-        int length = playerTiles.length;
+        int length = numberOfTiles;
         Tile temp;
         boolean isSorted = false ;
 
