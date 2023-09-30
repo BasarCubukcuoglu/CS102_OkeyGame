@@ -106,6 +106,7 @@ public class Player {
             playerTiles[i] = playerTiles[i + 1];
         }
         playerTiles[numberOfTiles] = null;
+        this.numberOfTiles--;
         return removeTile;
     }
 
