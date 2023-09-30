@@ -33,20 +33,27 @@ public class OkeyGame {
     }
 
     /*
-     * TODO: distributes the starting tiles to the players
-     * player at index 0 gets 15 tiles and starts first
+     * TODO: dibutes the starting tiles to the players
+     * player at index 0 gets 15 tiles astrind starts first
      * other players get 14 tiles
      * this method assumes the tiles are already sorted
      */
     public void distributeTilesToPlayers() {
-        for ( int i = 0; i < 4; i++ )
+        /*for ( int i = 0; i < 4; i++ )
         {
             for ( int j = 14*i; j < 14; j++ )
             {
                 players[i].addTile( tiles[j] );
                 currentTileIndex++;
             }
+        }*/
+        
+        for(int i = 0; i < players.length; i++){
+            for(int j = currentTileIndex; j < 14*(i+1); j++){
+                players[i].addTile( tiles[currentTileIndex++] );
+            }
         }
+        players[0].addTile(tiles[currentTileIndex++]);
     }
 
     /*
