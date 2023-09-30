@@ -57,7 +57,7 @@ public class Player {
 
         // TODO: find the longest chain starting from tilePosition going left and right
         int longestChainColorFirst = 0;
-        for (int i = tilePosition; i < playerTiles.length - 2 ; i++){
+        for (int i = tilePosition; i < playerTiles.length - 1 ; i++){
             if (playerTiles[i].canFormChainWith(playerTiles[i+1])== 1){
                 longestChainColorFirst += 1;
             }
@@ -74,7 +74,7 @@ public class Player {
         
         // TODO: find the longest chain starting from tilePosition going left and right
         int longestChainValueFirst = 0;
-        for (int i = tilePosition; i < playerTiles.length - 2 ; i++){
+        for (int i = tilePosition; i < playerTiles.length - 1 ; i++){
             if (playerTiles[i].canFormChainWith(playerTiles[i+1])== 2){
                 longestChainValueFirst += 1;
             }
@@ -105,8 +105,7 @@ public class Player {
         for (int i = index; i < numberOfTiles - 1; i++) {
             playerTiles[i] = playerTiles[i + 1];
         }
-        playerTiles[numberOfTiles] = null;
-        this.numberOfTiles--;
+        playerTiles[numberOfTiles - 1] = null;
         return removeTile;
     }
 
@@ -136,7 +135,7 @@ public class Player {
      * you are allowed to use Collections.sort method
      */
     public void sortTilesColorFirst() {
-        int length = numberOfTiles;
+        int length = playerTiles.length;
         Tile temp;
         boolean isSorted = false ;
 
@@ -165,7 +164,7 @@ public class Player {
      * you are allowed to use Collections.sort method
      */
     public void sortTilesValueFirst() {
-        int length = numberOfTiles;
+        int length = playerTiles.length;
         Tile temp;
         boolean isSorted = false ;
 
