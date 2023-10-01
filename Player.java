@@ -55,18 +55,39 @@ public class Player {
 
         sortTilesColorFirst();
         tilePosition = findPositionOfTile(t);
-        int left = tilePosition, right = tilePosition;
-        while (left > 0 && playerTiles[left].canFormChainWith(playerTiles[left - 1]) == 1) left--;
-        while (right < numberOfTiles - 1 && playerTiles[right].canFormChainWith(playerTiles[right + 1]) == 1) right++;
-        longestChainColorFirst = right - left + 1;
+        longestChainColorFirst = 1;
+        
+        while ( tilePosition > 0 && playerTiles[tilePosition].canFormChainWith( playerTiles[tilePosition - 1] ) == 1 )
+        {
+            tilePosition--;
+            longestChainColorFirst++;
+        }
+
+        tilePosition = findPositionOfTile(t);
+        
+        while ( tilePosition < numberOfTiles - 1 && playerTiles[tilePosition].canFormChainWith( playerTiles[tilePosition + 1]) == 1 )
+        {
+            tilePosition++;
+            longestChainColorFirst++;
+        }
 
         sortTilesValueFirst();
         tilePosition = findPositionOfTile(t);
-        left = tilePosition;
-        right = tilePosition;
-        while (left > 0 && playerTiles[left].canFormChainWith(playerTiles[left - 1]) == 2) left--;
-        while (right < numberOfTiles - 1 && playerTiles[right].canFormChainWith(playerTiles[right + 1]) == 2) right++;
-        longestChainValueFirst = right - left + 1;
+        longestChainValueFirst = 1;
+        
+        while ( tilePosition > 0 && playerTiles[tilePosition].canFormChainWith( playerTiles[tilePosition - 1] ) == 2 )
+        {
+            tilePosition--;
+            longestChainValueFirst++;
+        }
+
+        tilePosition = findPositionOfTile(t);
+        
+        while ( tilePosition < numberOfTiles - 1 && playerTiles[tilePosition].canFormChainWith( playerTiles[tilePosition + 1]) == 2 )
+        {
+            tilePosition++;
+            longestChainValueFirst++;
+        }
 
         return Math.max(longestChainColorFirst, longestChainValueFirst);
     }
@@ -174,9 +195,9 @@ public class Player {
     public void displayTiles() {
         System.out.println(playerName + "'s Tiles:");
         for (int i = 0; i < numberOfTiles; i++) {
-            System.out.print(playerTiles[i].toString() + " ");
+            System.out.printf("   %d: %s", i, playerTiles[i].toString());
         }
-        System.out.println();
+        System.out.println("\n");
     }
 
     public Tile[] getTiles() {
