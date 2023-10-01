@@ -182,7 +182,7 @@ public class OkeyGame {
 
         }
 
-        System.out.println(players[currentPlayerIndex] + "discarded: " + players[currentPlayerIndex].playerTiles[leastUsefulIndex]);
+        System.out.println(players[currentPlayerIndex].getName() + "discarded: " + players[currentPlayerIndex].playerTiles[leastUsefulIndex]);
         lastDiscardedTile = players[ currentPlayerIndex ].getAndRemoveTile(leastUsefulIndex);
     }
 
