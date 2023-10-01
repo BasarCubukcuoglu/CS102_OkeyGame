@@ -51,48 +51,24 @@ public class Player {
      */
     public int findLongestChainOf(Tile t) {
         int tilePosition;
+        int longestChainColorFirst, longestChainValueFirst;
 
         sortTilesColorFirst();
         tilePosition = findPositionOfTile(t);
-
-        // TODO: find the longest chain starting from tilePosition going left and right
-        int longestChainColorFirst = 0;
-        for (int i = tilePosition; i < playerTiles.length - 1 ; i++){
-            if (playerTiles[i].canFormChainWith(playerTiles[i+1])== 1){
-                longestChainColorFirst += 1;
-            }
-        }
-        for (int i = tilePosition; i > 0; i--){
-            if (playerTiles[i].canFormChainWith(playerTiles[i-1])== 1){
-                longestChainColorFirst += 1;
-            }
-        }
-        longestChainColorFirst++;
+        int left = tilePosition, right = tilePosition;
+        while (left > 0 && playerTiles[left].canFormChainWith(playerTiles[left - 1]) == 1) left--;
+        while (right < numberOfTiles - 1 && playerTiles[right].canFormChainWith(playerTiles[right + 1]) == 1) right++;
+        longestChainColorFirst = right - left + 1;
 
         sortTilesValueFirst();
         tilePosition = findPositionOfTile(t);
-        
-        // TODO: find the longest chain starting from tilePosition going left and right
-        int longestChainValueFirst = 0;
-        for (int i = tilePosition; i < playerTiles.length - 1 ; i++){
-            if (playerTiles[i].canFormChainWith(playerTiles[i+1])== 2){
-                longestChainValueFirst += 1;
-            }
-        }
-        for (int i = tilePosition; i > 0; i--){
-            if (playerTiles[i].canFormChainWith(playerTiles[i-1])== 2){
-                longestChainValueFirst += 1;
-            }
-        }
-        longestChainValueFirst++;
+        left = tilePosition;
+        right = tilePosition;
+        while (left > 0 && playerTiles[left].canFormChainWith(playerTiles[left - 1]) == 2) left--;
+        while (right < numberOfTiles - 1 && playerTiles[right].canFormChainWith(playerTiles[right + 1]) == 2) right++;
+        longestChainValueFirst = right - left + 1;
 
-
-        if(longestChainColorFirst > longestChainValueFirst) {
-            return longestChainColorFirst;
-        }
-        else{
-            return longestChainValueFirst;
-        }
+        return Math.max(longestChainColorFirst, longestChainValueFirst);
     }
 
     /*
@@ -136,7 +112,7 @@ public class Player {
      * you are allowed to use Collections.sort method
      */
     public void sortTilesColorFirst() {
-        int length = playerTiles.length;
+        int length = numberOfTiles;
         Tile temp;
         boolean isSorted = false ;
 
@@ -165,7 +141,7 @@ public class Player {
      * you are allowed to use Collections.sort method
      */
     public void sortTilesValueFirst() {
-        int length = playerTiles.length;
+        int length = numberOfTiles;
         Tile temp;
         boolean isSorted = false ;
 
