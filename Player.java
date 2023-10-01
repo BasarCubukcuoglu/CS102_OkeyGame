@@ -91,6 +91,55 @@ public class Player {
 
         return Math.max(longestChainColorFirst, longestChainValueFirst);
     }
+    /*public int findLongestChainOf(Tile t) {
+        int tilePosition;
+
+        sortTilesColorFirst();
+        tilePosition = findPositionOfTile(t);
+
+        // TODO: find the longest chain starting from tilePosition going left and right
+        int longestChainColorFirst = 0;
+        for (int i = tilePosition; i < playerTiles.length - 1 ; i++){
+            if (playerTiles[i].canFormChainWith(playerTiles[i+1])== 1 ){
+                longestChainColorFirst += 1;
+            }
+            else
+            {
+
+            }
+        }
+        for (int i = tilePosition; i > 0; i--){
+            if (playerTiles[i].canFormChainWith(playerTiles[i-1])== 1){
+                longestChainColorFirst += 1;
+            }
+        }
+        longestChainColorFirst++;
+
+        sortTilesValueFirst();
+        tilePosition = findPositionOfTile(t);
+        
+        // TODO: find the longest chain starting from tilePosition going left and right
+        int longestChainValueFirst = 0;
+        for (int i = tilePosition; i < playerTiles.length - 1 ; i++){
+            if (playerTiles[i].canFormChainWith(playerTiles[i+1])== 2){
+                longestChainValueFirst += 1;
+            }
+        }
+        for (int i = tilePosition; i > 0; i--){
+            if (playerTiles[i].canFormChainWith(playerTiles[i-1])== 2){
+                longestChainValueFirst += 1;
+            }
+        }
+        longestChainValueFirst++;
+
+
+        if(longestChainColorFirst > longestChainValueFirst) {
+            return longestChainColorFirst;
+        }
+        else{
+            return longestChainValueFirst;
+        }
+    } */
 
     /*
      * TODO: removes and returns the tile in given index
